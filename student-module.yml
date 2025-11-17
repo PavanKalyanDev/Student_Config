@@ -1,1 +1,47 @@
 
+# File name in Git repo: student-module.yml
+# (or student-module-default.yml if you use profiles)
+
+spring:
+  application:
+    name: Student_Module
+
+  # --------------------- DATABASE CONFIG ---------------------
+  datasource:
+    url: jdbc:mysql://localhost:3306/studentsdata?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: Pspk#@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect   # Forces MySQL8 dialect
+        format_sql: true
+
+  # --------------------- EMAIL CONFIG (Gmail) ---------------------
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ppspk7263@gmail.com
+    password: ljts mlxi xafi cofo                     # Gmail 16-char App Password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        debug: true                                     # Set to false in prod
+
+  # --------------------- DISABLE data.sql ---------------------
+  sql:
+    init:
+      mode: never
+
+# --------------------- SERVER PORT ---------------------
+server:
+  port: 8081
