@@ -5,21 +5,18 @@ spring:
   cloud:
     gateway:
       routes:
-        # 1. ALL API CALLS → Student Module (Eureka + Load Balancer)
         - id: student-module-api
-          uri: lb://student-module                # ← 100% CORRECT
+          uri: lb://student-module
           predicates:
-            - Path=/api/auth/**
+            - Path=/api/**
           filters:
             - StripPrefix=1
 
-        # 2. PDF & Uploads direct (no auth needed)
         - id: uploads-direct
           uri: http://localhost:8081
           predicates:
             - Path=/uploads/**
 
-        # 3. Static files (login page, css, js, images)
         - id: static-files
           uri: http://localhost:8081
           predicates:
@@ -34,11 +31,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: gateway,health,info,metrics
-  endpoint:
-    gateway:
-      enabled: true
-
-logging:
-  level:
-    org.springframework.cloud.gateway: DEBUG
+        include: gateway,health,info
