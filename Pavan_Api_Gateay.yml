@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8067
 
 spring:
   cloud:
@@ -9,7 +9,7 @@ spring:
         - id: student-module-api
           uri: lb://student-module                # ← 100% CORRECT
           predicates:
-            - Path=/api/**
+            - Path=/api/auth/**
           filters:
             - StripPrefix=1
 
