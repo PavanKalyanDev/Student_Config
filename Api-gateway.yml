@@ -2,6 +2,9 @@ server:
   port: 8067
 
 spring:
+  application:
+    name: Api-gateway
+
   cloud:
     gateway:
       routes:
@@ -25,19 +28,14 @@ spring:
           enabled: true
           lower-case-service-id: true
 
-      # ADD THIS LINE ONLY — JWT GLOBAL FILTER
       default-filters:
-        - JwtFilter
-
-  # ADD THIS BLOCK ONLY — JWT SECRET
-  application:
-    name: Api-gateway
+        - JwtAuthenticationFilter   # ← ఇదే కీ!
 
 jwt:
-  secret: cGF2YW5pdHNvbHV0aW9uc2tleQ==      # ← నీవు student-module లో ఉపయోగించినదే
+  secret: cGF2YW5pdHNvbHV0aW9uc2tleQ==
 
 management:
   endpoints:
     web:
       exposure:
-        include: gateway,health,info,refresh   # ← refresh add చేశా (curl/postman కోసం)
+        include: gateway,health,info,refresh
