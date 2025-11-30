@@ -29,7 +29,7 @@ spring:
           lower-case-service-id: true
 
       default-filters:
-        - JwtAuthenticationFilter   # ← ఇదే కీ!
+        - JwtFilter   # ← ఇదే కీ!
 
 jwt:
   secret: cGF2YW5pdHNvbHV0aW9uc2tleQ==
