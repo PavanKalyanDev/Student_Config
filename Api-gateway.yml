@@ -6,7 +6,7 @@ spring:
     gateway:
       routes:
         - id: student-module-api
-          uri: lb://student-module
+          uri: lb://STUDENT_MODULE
           predicates:
             - Path=/api/**
           filters:
