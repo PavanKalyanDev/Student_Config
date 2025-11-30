@@ -11,12 +11,10 @@ spring:
             - Path=/api/**
           filters:
             - StripPrefix=1
-
         - id: uploads-direct
           uri: http://localhost:8081
           predicates:
             - Path=/uploads/**
-
         - id: static-files
           uri: http://localhost:8081
           predicates:
@@ -27,8 +25,19 @@ spring:
           enabled: true
           lower-case-service-id: true
 
+      # ADD THIS LINE ONLY — JWT GLOBAL FILTER
+      default-filters:
+        - JwtFilter
+
+  # ADD THIS BLOCK ONLY — JWT SECRET
+  application:
+    name: Api-gateway
+
+jwt:
+  secret: cGF2YW5pdHNvbHV0aW9uc2tleQ==      # ← నీవు student-module లో ఉపయోగించినదే
+
 management:
   endpoints:
     web:
       exposure:
-        include: gateway,health,info
+        include: gateway,health,info,refresh   # ← refresh add చేశా (curl/postman కోసం)
