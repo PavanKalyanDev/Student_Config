@@ -14,10 +14,12 @@ spring:
             - Path=/api/**
           filters:
             - StripPrefix=1
+
         - id: uploads-direct
           uri: http://localhost:8081
           predicates:
             - Path=/uploads/**
+
         - id: static-files
           uri: http://localhost:8081
           predicates:
@@ -28,8 +30,9 @@ spring:
           enabled: true
           lower-case-service-id: true
 
-      default-filters:
-        - JwtFilter   # ← ఇదే కీ!
+      # ఇక్కడ ఉన్నది పూర్తిగా తీసేయ్ (లేదా కామెంట్ చెయ్):
+      # default-filters:
+      #   - JwtFilter
 
 jwt:
   secret: cGF2YW5pdHNvbHV0aW9uc2tleQ==
