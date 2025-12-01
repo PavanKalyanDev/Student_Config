@@ -1,10 +1,9 @@
+# Config Server లో Api-gateway.yml ఫైల్ పూర్తిగా ఇలా పెట్టు
+
 server:
   port: 8067
 
 spring:
-  application:
-    name: Api-gateway
-
   cloud:
     gateway:
       routes:
@@ -15,24 +14,13 @@ spring:
           filters:
             - StripPrefix=1
 
-        - id: uploads-direct
-          uri: http://localhost:8081
-          predicates:
-            - Path=/uploads/**
-
-        - id: static-files
-          uri: http://localhost:8081
-          predicates:
-            - Path=/**.html,/**.css,/**.js,/**.png,/**.jpg,/**.jpeg,/**.ico,/
-
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
 
-      # ఇక్కడ ఉన్నది పూర్తిగా తీసేయ్ (లేదా కామెంట్ చెయ్):
-      # default-filters:
-      #   - JwtFilter
+      # 8081 routes పూర్తిగా తీసేశా (తర్వాత కావాలంటే తిరిగి పెట్టు)
+      # static files ఇప్పుడు Api-gateway నుండే సర్వ్ అవుతాయి
 
 jwt:
   secret: cGF2YW5pdHNvbHV0aW9uc2tleQ==
