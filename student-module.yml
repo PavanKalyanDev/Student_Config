@@ -38,7 +38,10 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:9090     # Admin Server URL
+        url: http://localhost:9090      # Admin Server URL
+        instance:
+          prefer-ip: false
+          service-url: http://localhost:8081
 
 server:
   port: 8081
@@ -50,13 +53,15 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false            # 🚀 DO NOT use LAN IP
+    hostname: localhost                 # 🚀 Force Eureka to use localhost
+    instance-id: ${spring.application.name}:${server.port}
 
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "*"                    # 🚀 Show all endpoints
   endpoint:
     health:
-      show-details: always
+      show-details: always              # 🚀 Required for Admin Server
