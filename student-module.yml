@@ -1,9 +1,13 @@
-# File name must be: student-module.yml   (exactly this name, no extra folder)
+# GitHub లో ఫైల్ పేరు: student-module.yml
+
 spring:
   application:
-    name: Student_Module
+    name: student-module     # ← ఇక్కడ Student_Module కాదు → student-module
 
-  # --------------------- DATABASE CONFIG ---------------------
+server:
+  port: 8081
+
+  # --------------------- DATABASE ---------------------
   datasource:
     url: jdbc:mysql://localhost:3306/studentsdata?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
@@ -19,12 +23,12 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
 
-  # --------------------- EMAIL CONFIG (Gmail) ---------------------
+  # --------------------- EMAIL ---------------------
   mail:
     host: smtp.gmail.com
     port: 587
     username: ppspk7263@gmail.com
-    password: ljts mlxi xafi cofo   # Your Gmail App Password
+    password: ljts mlxi xafi cofo
     properties:
       mail:
         smtp:
@@ -32,13 +36,8 @@ spring:
           starttls:
             enable: true
             required: true
-        debug: true   # Change to false in production
+        debug: true
 
-  # --------------------- DISABLE data.sql ---------------------
   sql:
     init:
       mode: never
-
-# --------------------- SERVER PORT ---------------------
-server:
-  port: 8081
