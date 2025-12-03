@@ -1,13 +1,7 @@
-# GitHub లో ఫైల్ పేరు: student-module.yml
-
 spring:
   application:
-    name: student-module     # ← ఇక్కడ Student_Module కాదు → student-module
+    name: student-module
 
-server:
-  port: 8081
-
-  # --------------------- DATABASE ---------------------
   datasource:
     url: jdbc:mysql://localhost:3306/studentsdata?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
@@ -23,7 +17,6 @@ server:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
 
-  # --------------------- EMAIL ---------------------
   mail:
     host: smtp.gmail.com
     port: 587
@@ -41,3 +34,6 @@ server:
   sql:
     init:
       mode: never
+
+server:
+  port: 8081
