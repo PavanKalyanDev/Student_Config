@@ -38,7 +38,7 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:9090      # Admin Server URL
+        url: http://localhost:9090
         instance:
           prefer-ip: false
           service-url: http://localhost:8081
@@ -53,15 +53,23 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
   instance:
-    prefer-ip-address: false            # 🚀 DO NOT use LAN IP
-    hostname: localhost                 # 🚀 Force Eureka to use localhost
+    prefer-ip-address: false
+    hostname: localhost
     instance-id: ${spring.application.name}:${server.port}
 
 management:
   endpoints:
     web:
       exposure:
-        include: "*"                    # 🚀 Show all endpoints
+        include: "*"
   endpoint:
     health:
-      show-details: always              # 🚀 Required for Admin Server
+      show-details: always
+
+  tracing:
+    sampling:
+      probability: 1.0       # 🔥 Add tracing here
+
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9412/api/v2/spans   # 🔥 Your Zipkin server port
