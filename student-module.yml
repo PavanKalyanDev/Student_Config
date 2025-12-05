@@ -14,7 +14,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
 
   mail:
@@ -43,8 +43,9 @@ spring:
           prefer-ip: false
           service-url: http://localhost:8081
 
-server:
-  port: 8081
+logging:
+  level:
+    root: INFO
 
 eureka:
   client:
@@ -52,6 +53,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
   instance:
     prefer-ip-address: false
     hostname: localhost
@@ -68,8 +70,8 @@ management:
 
   tracing:
     sampling:
-      probability: 1.0       # 🔥 Add tracing here
+      probability: 1.0
 
   zipkin:
     tracing:
-      endpoint: http://localhost:9412/api/v2/spans   # 🔥 Your Zipkin server port
+      endpoint: http://localhost:9412/api/v2/spans
