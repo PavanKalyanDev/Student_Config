@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Admin_Module
+    name: Admin_Module   # ← ఇది ముఖ్యం! Eureka లో ఇదే పేరుతో కనిపిస్తుంది
 
 server:
   port: 8082
@@ -11,3 +11,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
