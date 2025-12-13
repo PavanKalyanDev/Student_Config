@@ -53,7 +53,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
   instance:
     prefer-ip-address: false
     hostname: localhost
@@ -67,11 +66,6 @@ management:
   endpoint:
     health:
       show-details: always
-
+  # Zipkin tracing పూర్తిగా తీసేశాం – ఇక ఎర్రర్ రాదు!
   tracing:
-    sampling:
-      probability: 1.0
-
-  zipkin:
-    tracing:
-      endpoint: http://localhost:9412/api/v2/spans
+    enabled: false
